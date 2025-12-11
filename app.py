@@ -10,8 +10,8 @@ st.set_page_config(page_title="Edunexus RPP Generator", page_icon="📝", layout
 def generate_rpp_with_ai(api_key, prompt_text):
     try:
         genai.configure(api_key=api_key)
-        # Menggunakan model flash yang cepat dan stabil
-        model = genai.GenerativeModel('gemini-1.5-flash')
+        # KITA PAKAI MODEL KLASIK AGAR PASTI JALAN
+        model = genai.GenerativeModel('gemini-pro')
         response = model.generate_content(prompt_text)
         return response.text
     except Exception as e:
@@ -68,7 +68,7 @@ def main():
         if not api_key:
             st.error("⚠️ Masukkan API Key dulu di menu sebelah kiri ya!")
         else:
-            with st.spinner('Sedang mengetik RPP untuk Anda... (Mohon tunggu 20 detik)'):
+            with st.spinner('Sedang mengetik RPP untuk Anda... (Mohon tunggu sebentar)'):
                 # Merangkai instruksi untuk AI
                 profil_str = ", ".join(profil)
                 prompt = f"""
