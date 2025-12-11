@@ -10,7 +10,7 @@ st.set_page_config(page_title="Edunexus RPP Generator", page_icon="📝", layout
 def generate_rpp_with_ai(api_key, prompt_text):
     try:
         genai.configure(api_key=api_key)
-        model = genai.GenerativeModel('gemini-pro')
+        model = genai.GenerativeModel('gemini-1.5-flash')
         response = model.generate_content(prompt_text)
         return response.text
     except Exception as e:
